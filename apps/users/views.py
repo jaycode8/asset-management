@@ -27,7 +27,7 @@ def sign_in(request):
 
     if not check_password(password, user.password):
         return Response({
-            "message": "Incorect password"
+            "message": "Incorrect password"
         }, status=400)
 
     token = jwt.encode(
