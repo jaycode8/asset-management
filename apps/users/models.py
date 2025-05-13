@@ -18,4 +18,4 @@ class User(models.Model):
         verbose_name_plural = "users"
 
     def __str__(self):
-        return self.id
+        return str(self.id)
