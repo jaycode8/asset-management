@@ -30,6 +30,11 @@ def sign_in(request):
             "message": "Incorrect password"
         }, status=400)
 
+    if not user.is_active:
+        return Response({
+            "message": "Account is suspended. Contact Admin"
+        }, status=400)
+
     token = jwt.encode(
         {"id": str(user.id), "exp": datetime.utcnow() + timedelta(days=1)},
         settings.SECRET_KEY,
